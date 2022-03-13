@@ -1,5 +1,7 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 
+part 'log.g.dart';
+
 @CopyWith()
 class Log {
   String? msg;
