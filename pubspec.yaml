@@ -11,7 +11,18 @@ dependencies:
   flutter:
     sdk: flutter
 
+  logger:
   copy_with_extension_gen:
+
+  buzz_utils:
+    git:
+      ref: master
+      url: https://github.com/abbas-alshafai/buzz_utils
+
+#  buzz_result:
+#    git:
+#      ref: master
+#      url: https://github.com/abbas-alshafai/buzz_result
 
 dev_dependencies:
   flutter_test:
