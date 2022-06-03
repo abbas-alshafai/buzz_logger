@@ -4,29 +4,21 @@ part 'log.g.dart';
 
 @CopyWith()
 class Log {
-  String? msg;
-  // List<LogMessage>? messages;
-  String? translationKey;
-  // List<LogMessage>? historyMessages;
-  String? userAction;
-  String? table;
-  StackTrace? stacktrace;
-  Object? obj;
-  LogLevel? logLevel;
-  bool bypassRepoInsertion;
+  
+  final String? msg;
+  
+  /// Use this if you would like to display a message from a translation file 
+  /// on the UI, where [msg] can be used for logging purposes 
+  final String? translationKey;
+  
+  final StackTrace? stacktrace;
+  final LogLevel logLevel;
 
-
-  // TODO add every msg to messages list
   Log({
-    this.translationKey, // TODO
+    this.translationKey,
     this.msg,
-    // List<LogMessage>? logMessages,
-    // List<LogMessage>? historyMessages,
     this.stacktrace,
-    this.table,
-    this.obj,
-    this.bypassRepoInsertion = false,
-    logLevel = LogLevel.INFO,
+    this.logLevel = LogLevel.info,
   }) ;
 
 
@@ -44,134 +36,28 @@ class Log {
     this.msg, {
     this.translationKey,
     this.stacktrace,
-    this.table,
-    this.obj,
-    this.userAction,
-    this.bypassRepoInsertion = false,
-    // List<LogMessage>? logMessages,
-    // List<LogMessage>? historyMessages,
-  })  : logLevel = LogLevel.INFO;
+  }) : logLevel = LogLevel.info;
 
   // warning
   Log.w({
     this.translationKey,
     this.msg,
     this.stacktrace,
-    this.table,
-    this.obj,
-    this.userAction,
-    this.bypassRepoInsertion = false,
-    // List<LogMessage>? logMessages,
-    // List<LogMessage>? historyMessages,
-  })  : logLevel = LogLevel.WARNING;
+  })  : logLevel = LogLevel.warning;
 
   // debug
   Log.d({
     this.translationKey,
     this.msg,
     this.stacktrace,
-    this.table,
-    this.obj,
-    this.userAction,
-    this.bypassRepoInsertion = false,
-    // List<LogMessage>? logMessages,
-    // List<LogMessage>? historyMessages,
-  })  : logLevel = LogLevel.DEBUG;
+  })  : logLevel = LogLevel.debug;
 
   // error
   Log.e(
     this.msg, {
     this.translationKey,
     this.stacktrace,
-    this.table,
-    this.obj,
-    this.userAction,
-    this.bypassRepoInsertion = false,
-    // List<LogMessage>? logMessages,
-    // List<LogMessage>? historyMessages,
-  })  : logLevel = LogLevel.ERROR;
-
-  // @override
-  // String toString() {
-  //   String logErr = StringUtils.empty; // TODO
-  //
-  //   if (StringUtils.instance.isNotBlank(msg)) logErr = logErr + "\nmsg: $msg";
-  //
-  //   if (StringUtils.instance.isNotBlank(stacktrace?.toString()))
-  //     logErr = logErr + "\nstackTrace: ${stacktrace.toString()}";
-  //
-  //   return logErr;
-  // }
-
-  // @override
-  // Map<String, dynamic> toJson() {
-  //   var json = {
-  //     // DbConstants.createdOn: this.createdOnTimestamp ?? DbUtils.instance.getServerTime(),
-  //
-  //     if (StringUtils.instance.isNotBlank(msg)) DbConstants.message: msg,
-  //
-  //     if (ListUtils.instance.isNotEmpty(logMessages))
-  //       DbConstants.errorMessages: logMessages,
-  //
-  //     if (StringUtils.instance.isNotBlank(uid)) DbConstants.user: uid,
-  //
-  //     if (StringUtils.instance.isNotBlank(email)) DbConstants.email: email,
-  //
-  //     if (StringUtils.instance.isNotBlank(country))
-  //       DbConstants.country: country,
-  //
-  //     if (StringUtils.instance.isNotBlank(city)) DbConstants.city: city,
-  //
-  //     if (StringUtils.instance.isNotBlank(businessId))
-  //       DbConstants.business: businessId,
-  //
-  //     if (StringUtils.instance.isNotBlank(locationId))
-  //       DbConstants.location: locationId,
-  //
-  //     if (StringUtils.instance.isNotBlank(productId))
-  //       DbConstants.product: productId,
-  //
-  //     if (StringUtils.instance.isNotBlank(table)) DbConstants.collection: table,
-  //
-  //     if (StringUtils.instance.isNotBlank(stacktrace?.toString()))
-  //       DbConstants.stacktrace: stacktrace.toString(),
-  //
-  //     if (logLevel != null) DbConstants.level: getLogLevel(logLevel!),
-  //
-  //     if (ListUtils.instance.isNotEmpty(messages))
-  //       for (LogMessage logMsg in messages!)
-  //         DbConstants.message: logMsg.toJson(),
-  //
-  //     if (ListUtils.instance.isNotEmpty(historyMessages))
-  //       for (LogMessage logMsg in historyMessages!)
-  //         DbConstants.history: logMsg.toJson(),
-  //   };
-  //
-  //   return json;
-  // }
-
-
-  // bool containsLogMessage(String msgCode) {
-  //   if (ListUtils.instance.isEmpty(logMessages)) return false;
-  //
-  //   for (String? code in logMessages!.map((e) => e.actionCode).toList())
-  //     if (msgCode == code) return true;
-  //
-  //   return false;
-  // }
+  })  : logLevel = LogLevel.error;
 }
 
-enum LogLevel { INFO, DEBUG, WARNING, ERROR }
-
-// String getLogLevel(LogLevel level) {
-//   switch (level) {
-//     case LogLevel.WARNING:
-//       return DbConstants.warning;
-//     case LogLevel.ERROR:
-//       return DbConstants.error;
-//     case LogLevel.INFO:
-//       return DbConstants.info;
-//     default:
-//       return DbConstants.debug;
-//   }
-// }
+enum LogLevel { info, debug, warning, error }

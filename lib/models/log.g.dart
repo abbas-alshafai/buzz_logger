@@ -7,17 +7,11 @@ part of 'log.dart';
 // **************************************************************************
 
 abstract class _$LogCWProxy {
-  Log bypassRepoInsertion(bool bypassRepoInsertion);
-
-  Log logLevel(dynamic logLevel);
+  Log logLevel(LogLevel logLevel);
 
   Log msg(String? msg);
 
-  Log obj(Object? obj);
-
   Log stacktrace(StackTrace? stacktrace);
-
-  Log table(String? table);
 
   Log translationKey(String? translationKey);
 
@@ -28,12 +22,9 @@ abstract class _$LogCWProxy {
   /// Log(...).copyWith(id: 12, name: "My name")
   /// ````
   Log call({
-    bool? bypassRepoInsertion,
-    dynamic? logLevel,
+    LogLevel? logLevel,
     String? msg,
-    Object? obj,
     StackTrace? stacktrace,
-    String? table,
     String? translationKey,
   });
 }
@@ -45,23 +36,13 @@ class _$LogCWProxyImpl implements _$LogCWProxy {
   const _$LogCWProxyImpl(this._value);
 
   @override
-  Log bypassRepoInsertion(bool bypassRepoInsertion) =>
-      this(bypassRepoInsertion: bypassRepoInsertion);
-
-  @override
-  Log logLevel(dynamic logLevel) => this(logLevel: logLevel);
+  Log logLevel(LogLevel logLevel) => this(logLevel: logLevel);
 
   @override
   Log msg(String? msg) => this(msg: msg);
 
   @override
-  Log obj(Object? obj) => this(obj: obj);
-
-  @override
   Log stacktrace(StackTrace? stacktrace) => this(stacktrace: stacktrace);
-
-  @override
-  Log table(String? table) => this(table: table);
 
   @override
   Log translationKey(String? translationKey) =>
@@ -76,41 +57,24 @@ class _$LogCWProxyImpl implements _$LogCWProxy {
   /// Log(...).copyWith(id: 12, name: "My name")
   /// ````
   Log call({
-    Object? bypassRepoInsertion = const $CopyWithPlaceholder(),
     Object? logLevel = const $CopyWithPlaceholder(),
     Object? msg = const $CopyWithPlaceholder(),
-    Object? obj = const $CopyWithPlaceholder(),
     Object? stacktrace = const $CopyWithPlaceholder(),
-    Object? table = const $CopyWithPlaceholder(),
     Object? translationKey = const $CopyWithPlaceholder(),
   }) {
     return Log(
-      bypassRepoInsertion:
-          bypassRepoInsertion == const $CopyWithPlaceholder() ||
-                  bypassRepoInsertion == null
-              ? _value.bypassRepoInsertion
-              // ignore: cast_nullable_to_non_nullable
-              : bypassRepoInsertion as bool,
       logLevel: logLevel == const $CopyWithPlaceholder() || logLevel == null
           ? _value.logLevel
           // ignore: cast_nullable_to_non_nullable
-          : logLevel as dynamic,
+          : logLevel as LogLevel,
       msg: msg == const $CopyWithPlaceholder()
           ? _value.msg
           // ignore: cast_nullable_to_non_nullable
           : msg as String?,
-      obj: obj == const $CopyWithPlaceholder()
-          ? _value.obj
-          // ignore: cast_nullable_to_non_nullable
-          : obj as Object?,
       stacktrace: stacktrace == const $CopyWithPlaceholder()
           ? _value.stacktrace
           // ignore: cast_nullable_to_non_nullable
           : stacktrace as StackTrace?,
-      table: table == const $CopyWithPlaceholder()
-          ? _value.table
-          // ignore: cast_nullable_to_non_nullable
-          : table as String?,
       translationKey: translationKey == const $CopyWithPlaceholder()
           ? _value.translationKey
           // ignore: cast_nullable_to_non_nullable
@@ -120,6 +84,6 @@ class _$LogCWProxyImpl implements _$LogCWProxy {
 }
 
 extension $LogCopyWith on Log {
-  /// Returns a callable class that can be used as follows: `instanceOfclass Log.name.copyWith(...)` or like so:`instanceOfclass Log.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfLog.copyWith(...)` or like so:`instanceOfLog.copyWith.fieldName(...)`.
   _$LogCWProxy get copyWith => _$LogCWProxyImpl(this);
 }

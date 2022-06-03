@@ -5,6 +5,7 @@ import 'logger_factory.dart';
 final LogService _logger = LoggerServiceFactory.instance.getLogger();
 
 class Logger {
+
   /// In Release mode, the routine of this method will be bypassed.
   /// This method will operate only in debug and profile modes
   static bool debug(final String msg) {
@@ -28,8 +29,6 @@ class Logger {
     log ??= Log.i(msg ?? 'log msg is missing', stacktrace: stack);
 
     _logger.log(log);
-    // TODO
-    // ProviderContainer().read(loggerProvider(log));
   }
 
   static void error(StackTrace stackTrace, String errMsg) {
@@ -37,13 +36,7 @@ class Logger {
         log: Log(
           msg: errMsg,
           stacktrace: stackTrace,
-          logLevel: LogLevel.ERROR,
+          logLevel: LogLevel.error,
         ));
   }
-
-  // static Result<T> result<T>(Result<T> result) {
-  //   if (result.log != null) log(log: result.log);
-  //
-  //   return result;
-  // }
 }
