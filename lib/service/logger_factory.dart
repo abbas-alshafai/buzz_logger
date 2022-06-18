@@ -50,7 +50,7 @@ class _LogServiceImpl implements LogService {
   void _e({final String? msg, Log? log}) {
     log ??= Log(msg: msg);
     assert(StringUtils.instance.isNotBlank(log.msg));
-    _logger.e(log.msg, null, log.stacktrace);
+    _logger.e(log.msg, log.error, log.stacktrace);
   }
 
   @override
